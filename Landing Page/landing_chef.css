@@ -1,0 +1,50 @@
+.white, .white2 {
+  color: white;
+}
+
+.white {
+  font-size: 70px;
+  font-family: Montserrat;
+  font-weight: 700;
+}
+
+.white2 {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-size: 20px;
+  padding-bottom: 3%;
+}
+
+body {
+  background: url(https://s-media-cache-ak0.pinimg.com/originals/20/e7/e5/20e7e5b37e805ec4c05c3f3e69fad138.jpg);
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+}
+html {
+  height: 100%;
+}
+
+.container2 {
+  padding-top: 15%;
+}
+
+.hat {
+  margin-bottom: -30px;
+}
+
+.list-items:hover {
+    background: #B7B5B5;
+    color: black;
+}
+
+.list-items-g:hover {
+    background: #5DB92C;
+    border-radius: 15px;
+    color: black;
+}
+
+.list-items, .list-items-g {
+  font-family: Montserrat;
+  color: black;
+}
