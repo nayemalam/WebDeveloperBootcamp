@@ -7,7 +7,7 @@
 //   // put all of your JS code from the lecture here
 // }, 500);
 
-var todos = ["Buy New Turtle"];
+var todos = [];
 
 
 window.setTimeout(function() {
@@ -16,17 +16,61 @@ window.setTimeout(function() {
 
   while (input !== "quit") {
     if (input === "list") {
-      console.log(todos);
+      listTodos();
     } else if(input === "new") {
-      var newTodo = prompt("Enter new todo");
-      todos.push(newTodo);
+      newTodo();
     } else if(input === "remove") {
-      var last = todos.pop();
-      alert("Item " + last + " has been removed.");
+      removeTodo();
+    } else if(input === "view") {
+      viewTodo();
     }
     input = prompt("What would you like to do?");
+    if(input === null) {
+      return;
+    }
   }
   console.log("OK. YOU QUIT THE APP");
+  
+  // Functions
+  function listTodos() {
+    console.log("**********");
+      for(var i =0; i<todos.length; i++) {
+        var filtered = todos.filter(function(e) {
+          return e != null;
+        });
+        console.log(i+": " +filtered[i]);
+      }
+    console.log("**********");
+  } 
+
+  function newTodo() {
+    var newTodo = prompt("Enter new todo");
+    todos.push(newTodo);
+    console.log(newTodo + " added to the list")
+  }
+
+  function removeTodo() {
+    var listSize = todos.length-1;
+    var index = prompt("Which index would you like to remove? \nYou can select from: 0 - " +listSize);
+      if(index<todos.length) {
+        // which element to delete and how many
+        var selected = todos.splice(index, 1);
+        console.log("Item " + selected + " has been removed.");
+      } 
+      else {
+        alert("The index must be between: 0 - " + listSize);
+      }
+  }
+
+  function viewTodo() {
+    var listSize = todos.length-1;
+    var index = prompt("Which index would you like to view? \nYou can select from: 0 - " +listSize);
+    if(index<todos.length) {
+      alert("The todo for index " +index+ " is: " +todos[index]);
+    } else {
+      alert("The index must be between: 0 - " + listSize);
+    }
+  }
 
 
 }, 500);
