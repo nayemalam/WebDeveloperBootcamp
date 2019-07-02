@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Selectors</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <h1>Hello</h1>
+        <h1>Goodbye</h1>
+        <ul>
+            <li id="highlight">List Item 1</li>
+            <li class="bolded">List Item 2</li>
+            <li class="bolded">List Item 3</li>
+        </ul>
+
+        <h2>From JS console</h2>
+        <pre>
+            <code>
+        // get element by ID
+        var tag = document.getElementById("highlight");
+        tag.style.color = "red";
+
+        // get elements by class name
+        var tags = document.getElementsByClassName("bolded");
+        console.log("Length of tags: " +tags.length +"\nThe first tag: " +tags[0]);
+
+        // get elements by tag name (returns a list by tag name - li or ul)
+        var tagNames = document.getElementsByTagName("li");
+        console.log(tagNames);
+
+        // querySelector (newer method that does both getClass and getID!!) --> CSS Style
+        // all querySelector ones give you --> OBJECTS
+        var myQuery = document.querySelector("#highlight");
+        myQuery.style.color = "pink";
+
+        // querySelectorAll (takes CSS selector and returns all matching elements)
+        var myQuerywithH1 = document.querySelectorAll("h1");
+        console.log(myQuerywithH1);
+            </code>
+        </pre>
+        
+        <script src="./script.js" async defer></script>
+    </body>
+</html>

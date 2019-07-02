@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>JS Events</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+        <button>Click Me</button>
+        <button class="btn2">Click Me to change text below</button>
+        <p>No one has clicked the button yet.</p>
+        <h1>If you click me, I will change to pink.</h1>
+        <ul>
+            <li>Flowers</li>
+            <li>Orchids</li>
+            <li>Darts</li>
+        </ul>
+        <p class="toggler">Click this paragraph back and forth {toggle}</p>
+        <button class="b-toggler">Click this to change the background back and forth {toggle}</button>
+       <h2>From JS Console</h2>
+       <pre>
+           <code>
+               
+        // EXAMPLE 1
+        var button = document.querySelector("button");
+        button.addEventListener("click", function() {
+            console.log("First button has been clicked.");
+            alert("You clicked the button!");
+        });
+        
+        // EXAMPLE 2
+        // can use eventListener and incorporate external functions inside (instead of creating one explicitly)
+        var btn2 = document.querySelector(".btn2");
+        var p = document.querySelector("p");
+        btn2.addEventListener("click", changeText);
+        
+        function changeText() {
+            console.log("Second button has been clicked.");
+            p.textContent = "You clicked the button!";
+        }
+        
+        var h1 = document.querySelector("h1");
+        h1.addEventListener("click", function() {
+            h1.classList.add("to-head");
+            console.log("h1 clicked");
+        })
+        
+        // EXAMPLE 3
+        // using THIS keyword again
+        var lis = document.querySelectorAll("li");
+        for(var i=0; i < lis.length; i++){
+            lis[i].addEventListener("click", function() {
+                console.log("clicked a list item.");
+                this.style.color = "pink";
+            })
+        }
+        // EXAMPLE 4 : TOGGLING
+        var toggler = document.querySelector(".toggler");
+        var isPink = false;
+        toggler.addEventListener("click", function() {
+            if(isPink) {
+                this.style.background = "white";
+                // isPink = false;
+                console.log("changed to white");
+            } else {
+                this.style.background = "pink";
+                // isPink = true;
+                console.log("changed to pink")
+            }
+            // if isPink -> changed to white
+            // else --> changed to pink
+            isPink = !isPink;
+        })
+
+        // to easily toggle: just use the .classList.toggle("className")
+        var bToggler = document.querySelector(".b-toggler");
+        bToggler.addEventListener("click", function() {
+            document.body.classList.toggle("b-togglerBackground");
+        })
+           </code>
+       </pre>
+        
+        <script src="./script.js" async defer></script>
+    </body>
+</html>

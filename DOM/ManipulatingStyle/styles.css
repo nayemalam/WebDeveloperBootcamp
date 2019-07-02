@@ -1,0 +1,10 @@
+.some-class {
+    color: red;
+    background: turquoise;
+    border: 6px solid pink;
+    padding: 5px;
+}
+
+.another-class {
+    font-size: 55px;
+}
