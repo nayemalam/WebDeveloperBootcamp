@@ -37,11 +37,16 @@ btn2.addEventListener("click", function() {
 })
 
 // reset everything (bootstrap kinda way)
-reset.addEventListener("click", function() {
+reset.addEventListener("click", resetAll);
+
+function resetAll() {
     btn1.disabled = false;
     btn2.disabled = false; 
     playerOneScore.value = 0;
     playerOneScore.style.color = "#000000";
     playerTwoScore.value = 0;
     playerTwoScore.style.color = "#000000";
-})
+}
+
+// reset the stats if someone changes winning score in the middle of the game
+scoreKeep.addEventListener("click", resetAll);

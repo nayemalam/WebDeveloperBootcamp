@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>To Do</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <ul>
+            <li>Wash cat</li>
+            <li>Feed cat</li>
+            <li>Feed cat to dog</li>
+        </ul>
+
+        <h2>From JS Console</h2>
+
+        <pre>
+            <code>
+        lis = document.querySelectorAll("li");
+
+        // iterate through all the lis
+        for(var i = 0; i < lis.length; i++){
+            // change color of selected li
+            lis[i].addEventListener("click", function() {
+                console.log("done");
+                this.classList.toggle("done");
+            })
+
+            // if hovered over, change color
+            lis[i].addEventListener("mouseover", function() {
+                this.classList.add("selected");
+            })
+
+            // if none-hovered, change back to default
+            lis[i].addEventListener("mouseout", function() {
+                this.classList.remove("selected");
+            })
+
+        }
+
+
+            </code>
+        </pre>
+        
+        <script src="script.js" async defer></script>
+    </body>
+</html>
