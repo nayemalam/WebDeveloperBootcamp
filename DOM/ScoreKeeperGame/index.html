@@ -9,17 +9,72 @@
         <title>ScoreKeeper Game</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <h1><span class="playerOneScore" value="0">0</span> to <span class="playerTwoScore">0</span></h1>
-        <p>Playing to: <span class="scoreKeep">5</span></p>
-        <button class="btn1">Player One</button>
-        <button class="btn2">Player Two</button>
-        <button class="reset">Reset</button>
+        <h2>Play 1v1 against a friend of yours and keep track of your score!</h2>
+        <br/><br/><br/><br/>
+        <div style="text-align: center;">
+            <input class="playerOneScore score" value="0" readonly> <input class="playerTwoScore score" value="0" readonly>
+            <p>Playing to: <input type="number" class="scoreKeep" value="5"></p>
+            <button class="btn1">Player One</button>
+            <button class="btn2">Player Two</button>
+            <button class="reset">Reset</button>
+        </div>
 
         <br/><br/><br/><br/>
         <h2>From JS Console</h2>
+        <pre>
+            <code>
+        // initial personal attempts (not watching the solution)
+        // grab all DOMs
+        var playerOneScore = document.querySelector(".playerOneScore");
+        var playerTwoScore = document.querySelector(".playerTwoScore");
+        var reset = document.querySelector(".reset");
+        var scoreKeep = document.querySelector(".scoreKeep");
+        var btn1 = document.querySelector(".btn1");
+        var btn2 = document.querySelector(".btn2");
+        
+        // increment player numbers using the buttons
+        btn1.addEventListener("click", function() {
+            var value = parseInt(playerOneScore.value);
+            if(value < scoreKeep.value) {
+                value++;
+                playerOneScore.value = value;
+                if(playerOneScore.value == scoreKeep.value) {
+                    playerOneScore.style.color = "#27C96D";
+                    btn1.disabled = true;
+                    btn2.disabled = true;
+                    console.log("Player 1 wins!");
+                } 
+            }
+        })
+        
+        btn2.addEventListener("click", function() {
+            var value = parseInt(playerTwoScore.value);
+            if(value < scoreKeep.value) {
+                value++;
+                playerTwoScore.value = value;
+                if(playerTwoScore.value === scoreKeep.value) {
+                    playerTwoScore.style.color = "#27C96D";
+                    btn1.disabled = true;
+                    btn2.disabled = true;
+                    console.log("Player 2 wins!");
+                }
+            }
+        })
+        
+        // reset everything (bootstrap kinda way)
+        reset.addEventListener("click", function() {
+            btn1.disabled = false;
+            btn2.disabled = false; 
+            playerOneScore.value = 0;
+            playerOneScore.style.color = "#000000";
+            playerTwoScore.value = 0;
+            playerTwoScore.style.color = "#000000";
+        })
+            </code>
+        </pre>
 
         
         <script src="./script.js" async defer></script>
