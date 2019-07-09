@@ -10,37 +10,77 @@ start = document.querySelector(".start");
 var colors = generateRandomColors(6);
 var pickedColor = selectedColor();
 
-mainRGB.textContent = pickedColor;
+// use replace to just change the first three letters for better representation
+mainRGB.textContent = pickedColor.replace("rgb", "RGB");
 
 // randomColor();
 // console.log("randomColor: "+randomColor());
 changeBoxColor();
 
-hard.addEventListener("click", function() {
-    hard.style.color = "white";
-    hard.style.backgroundColor = "rgb(0, 140, 255)";
-    easy.style.color = "black";
-    easy.style.backgroundColor = "rgb(230, 230, 230)";
-})
+hard.addEventListener("click", selectHard);
+easy.addEventListener("click", selectEasy);
 
-easy.addEventListener("click", function() {
+function selectHard(event) {
+    hard.style.color = "white";
+    hard.style.backgroundColor = "rgb(0, 140, 255)"; //blue
+    easy.style.color = "black";
+    easy.style.backgroundColor = "rgb(230, 230, 230)"; //grey
+    console.log(event.target);
+    colors = generateRandomColors(6);
+    for(var i=0; i<colors.length; i++) {
+        items[i].style.display = "block";
+    }
+}
+
+function selectEasy(event) {
+    start.textContent = "NEW COLORS";
     easy.style.color = "white";
     easy.style.backgroundColor = "rgb(0, 140, 255)"
     hard.style.color = "black";
     hard.style.backgroundColor = "rgb(230, 230, 230)";
-})
+    console.log(event.target);
+    colors = generateRandomColors(3);
+    pickedColor = selectedColor();
+    mainRGB.textContent = pickedColor.replace("rgb", "RGB");
+    for(var i=0; i<items.length; i++) {
+        // if there is a next color
+        if(colors[i]) {
+            items[i].style.backgroundColor = pickedColor;
+        } else {
+            items[i].style.display = "none";
+        }
+    }
+    reset.addEventListener("click", function() {
+        start.textContent = "NEW COLORS";
+        // generate all new random colors
+        colors = generateRandomColors(3);
+        // pick a new random color from array
+        pickedColor = selectedColor();
+        // change color display to match pickedColor
+        mainRGB.textContent = pickedColor.replace("rgb", "RGB");
+        // change color of squares
+        changeBoxColor();
+    })
+}
 
 reset.addEventListener("click", function() {
-    
+    start.textContent = "NEW COLORS";
+    message.textContent = "";
+    // generate all new random colors
+    colors = generateRandomColors(6);
+    // pick a new random color from array
+    pickedColor = selectedColor();
+    // change color display to match pickedColor
+    mainRGB.textContent = pickedColor.replace("rgb", "RGB");
+    // change color of squares
+    changeBoxColor();
 })
 
 function changeBoxColor() {
     for(var i =0; i<items.length; i++) {
-        
         console.log(colors[i]);
         // colors.push(randomColor());
         items[i].style.backgroundColor = colors[i];
-        // console.log(colors[i]);
         items[i].addEventListener("click", function() {
             this.classList.add("hide");
             var clickedColor = this.style.backgroundColor;
@@ -48,14 +88,14 @@ function changeBoxColor() {
             if(clickedColor === pickedColor) {
                 message.textContent = "Correct!";
                 changeAllBoxColors(pickedColor);
-            }else {
-                message.textContent = "Wrong!";
+                start.textContent = "Play Again?";
+                jumbotron.style.backgroundColor = "rgb(0, 140, 255)";
+            } else {
+                message.textContent = "Try Again";
             }
         })
         items[i].classList.remove("hide");
-        
     }
-
 }
 
 function changeAllBoxColors(color) {
@@ -88,82 +128,3 @@ function selectedColor() {
     var random = Math.floor(Math.random() * colors.length);
     return colors[random];
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// reset.addEventListener("click", function() {
-//     // randomColor();
-//     changeBoxColor();
-//     jumbotron.style.cssText = "background-color: "+mainRGB.textContent+" !important";
-//     message.textContent = '';
-//     start.textContent = "NEW COLORS"
-//     console.log("// "+mainRGB.textContent);
-//     console.log("colors switched");
-// });
-
-// function changeBoxColor() {
-//     for(var i=0; i < items.length; i++) {
-//         randomColor();
-//         // console.log(colors);
-//         // console.log(colors[i]);
-//         for(var j=0; j<colors.length; j++){
-//             items[i].style.backgroundColor = colors[j];
-//             // console.log(items[i].style.backgroundColor + " and " +colors[j]);
-//             // decision(items[i],colors[j]);
-//         }
-//         // console.log(colors[i]);
-//         items[i].classList.remove("hide");
-//     }
-// }
-
-// // console.log(colors);
-// function decision(item, choice) {
-//     item.addEventListener("click", function() {
-//         console.log("item: "+this.style.backgroundColor)
-//         console.log("choice: "+choice);
-
-//         this.classList.add("hide");
-//         if(this.style.backgroundColor === choice) {
-//             message.textContent = "Correct!";
-//         } else {
-//             message.textContent = "false";
-//         }
-
-//     })
-
-
-// }
-

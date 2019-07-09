@@ -34,7 +34,11 @@ body {
 }
 
 .reset:hover {
-    color: black;
+    text-decoration: none;
+    background-color: rgb(0, 140, 255) !important;
+    color: white !important;
+    padding: 3px 15px -3px 15px;
+
 }
 
 .jumbotron {
@@ -44,8 +48,6 @@ body {
 .easy {
     font-weight: 800;
     margin-right: 20px;
-    background-color: rgb(0, 140, 255);
-    color: white;
     padding: 3px 15px 3px 15px;
     cursor: pointer;
 }
@@ -57,6 +59,8 @@ body {
 
 .hard{
     font-weight: 800;
+    background-color: rgb(0, 140, 255);
+    color: white;
     cursor: pointer;
     padding: 3px 15px 3px 15px;
     margin-left: -22px;
