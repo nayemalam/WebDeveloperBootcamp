@@ -1,3 +1,4 @@
+console.log("GAME CHEAT: console can provide the answer... <-- debugging purposes ofcourse")
 reset = document.querySelector(".reset");
 message = document.querySelector(".message");
 easy = document.querySelector(".easy");
@@ -64,6 +65,7 @@ function selectEasy(event) {
 }
 
 reset.addEventListener("click", function() {
+    jumbotron.style.backgroundColor = "rgb(0, 140, 255)";
     start.textContent = "NEW COLORS";
     message.textContent = "";
     // generate all new random colors
@@ -89,7 +91,6 @@ function changeBoxColor() {
                 message.textContent = "Correct!";
                 changeAllBoxColors(pickedColor);
                 start.textContent = "Play Again?";
-                jumbotron.style.backgroundColor = "rgb(0, 140, 255)";
             } else {
                 message.textContent = "Try Again";
             }
